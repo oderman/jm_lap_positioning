@@ -8,15 +8,20 @@ require 'libraries/phpmailer/Exception.php';
 require 'libraries/phpmailer/PHPMailer.php';
 require 'libraries/phpmailer/SMTP.php';
 
-$sql = "INSERT INTO contactform(name, email, message)VALUES(:name, :email, :message)";
-$stmt = $pdo->prepare($sql);
+try{
 
-$stmt->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
-$stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-$stmt->bindParam(':message', $_POST['message'], PDO::PARAM_STR);
+    $sql = "INSERT INTO contactForm(name, email, message)VALUES(:name, :email, :message)";
+    $stmt = $pdo->prepare($sql);
 
-$stmt->execute();
+    $stmt->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
+    $stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+    $stmt->bindParam(':message', $_POST['message'], PDO::PARAM_STR);
 
+    $stmt->execute();
+
+}catch(PDOException $e){ 
+    die ("Error: " . $e->GetMessage() . " En la Linea " .  $e->getline()); 
+}
 
 include("templateEmail.php");
 
@@ -38,10 +43,11 @@ try {
     $mail->setFrom('info@lap-positioning.com', 'Lap');
 
     $mail->addAddress($_POST['email'], $_POST['name']);     // Add a recipient
+    $mail->addAddress('info@lap-positioning.com', 'Lap');     // Add a recipient
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = "Contact Form" . $newId;
+    $mail->Subject = "LAP | Nuevp mensaje de contacto";
     $mail->Body = $fin;
     $mail->CharSet = 'UTF-8';
 
