@@ -55,7 +55,7 @@
       <div class="row">
         <div class="col-lg-12 p-0">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/logonuevo.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -422,17 +422,24 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
+
+          <?php
+          if(isset($_GET['messageSent']) and $_GET['messageSent'] == 1){
+            echo '<h3>Su mensaje fue enviado correctamente.</h3>';
+          }
+          ?>
+
           <div class="contact-form-wrapper">
-            <form id="contact-form" method="POST">
+            <form method="POST" action="sendContactForm.php">
               <div class="row">
                 <div class="col-md-12">
-                  <input type="text" class="input-field borderd" id="name" placeholder="Tu nombre" required>
+                  <input type="text" class="input-field borderd" name="name" placeholder="Tu nombre" required>
                 </div>
                 <div class="col-md-12">
-                  <input type="email" class="input-field borderd" id="email" placeholder="Tu email" required>
+                  <input type="email" class="input-field borderd" name="email" placeholder="Tu email" required>
                 </div>
                 <div class="col-12">
-                  <textarea class="input-field borderd textarea" rows="3" id="message"
+                  <textarea class="input-field borderd textarea" rows="3" name="message"
                     placeholder="Escriba su mensaje aquí" required></textarea>
                 </div>
                 <div class="col-12">
