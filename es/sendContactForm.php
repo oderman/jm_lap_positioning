@@ -1,12 +1,12 @@
 <?php
-include("conection.php");
+include("../conection.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'libraries/phpmailer/Exception.php';
-require 'libraries/phpmailer/PHPMailer.php';
-require 'libraries/phpmailer/SMTP.php';
+require '../libraries/phpmailer/Exception.php';
+require '../libraries/phpmailer/PHPMailer.php';
+require '../libraries/phpmailer/SMTP.php';
 
 try{
 
@@ -47,7 +47,7 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = "LAP | Nuevp mensaje de contacto";
+    $mail->Subject = "LAP(es) | Nuevo mensaje de contacto";
     $mail->Body = $fin;
     $mail->CharSet = 'UTF-8';
 
