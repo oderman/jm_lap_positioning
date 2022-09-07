@@ -1,7 +1,7 @@
 <?php
 $server = 'localhost';
 $user = 'root';
-$pass = '1234';
+$pass = 'zefe07EL';
 $dbName = 'latinpositioning_website';
 
 
