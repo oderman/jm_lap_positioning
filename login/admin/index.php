@@ -83,7 +83,7 @@
   <input class="form-control form-control-primary w-100 rounded-0 border-0" type="text" placeholder="Buscar" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="../">Salir</a>
+      <a class="nav-link px-3" href="../signOut.php">Salir</a>
     </div>
   </div>
 </header>
