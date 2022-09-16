@@ -79,13 +79,24 @@
       <form method="post" action="authenticate.php">
         <img class="mb-4" src="../lap.png" alt="" width="100">
 			
-        <?php if(isset($_GET["error"]) && $_GET["error"]==1){?>
-          <p class="mt-2">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              El usuario o clave no son correctos. Por favor verifique.
-            </div>
-          </p>
-        <?php }?>
+        <?php
+          if(isset($_GET["error"])){
+            if($_GET["error"]==1){    
+        ?>
+              <p class="mt-2">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  El usuario o clave no son correctos. Por favor verifique.
+                </div>
+              </p>
+        <?php
+            }elseif($_GET["error"]==2){
+        ?>
+              <p class="mt-2">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Operacion Invalida. Por favor inicie sesión.
+                </div>
+              </p>
+        <?php }}?>
 
         <h1 class="h3 mb-3 fw-normal">Administración LAP</h1>
         <div class="form-floating">
